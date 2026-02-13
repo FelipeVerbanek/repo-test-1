@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: addons-helm
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - name: metric-server-dev
+        chart: metric-server
+        repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
+        chartVersion: 3.13.0
+        namespace: monitoring
+        server: https://10.89.0.3:6443
+        path: helm-charts/metricsserver
+        valuesFile: values.yaml
+  
+  template:
+    metadata:
+      name: "addon-{{name}}"
+    spec:
+      project: default
+      source:
+        repoURL: "{{repoURL}}"
+        targetRevision: HEAD
+        path: "{{path}}"
+        helm:
+          parameters:
+          - name: "{{metric-server-dev}}"
+            value: "{{chartVersion}}"
+          valueFiles:
+          - "{{valuesFile}}"
+      destination:
+        server: "{{server}}"
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+

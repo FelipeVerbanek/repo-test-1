@@ -20,7 +20,8 @@ spec:
       repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
       revision: HEAD
       directories:
-      - path: bootstrap/**
+      - path: bootstrap/apps/*/*
+      - path: bootstrap/projects
   template:
     metadata:
       name: '{{path.basename}}'

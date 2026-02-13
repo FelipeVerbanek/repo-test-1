@@ -20,9 +20,13 @@ spec:
       repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
       revision: HEAD
       directories:
-      - path: bootstrap/apps/*/*
+      - path: bootstrap/apps/*
       - path: bootstrap/projects
-      - path: bootstrap/addons
+  - git:
+      repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
+      revision: HEAD
+      files:
+      - path: bootstrap/addons.yaml
   template:
     metadata:
       name: '{{path.basename}}'

@@ -6,8 +6,8 @@ metrics-server:
 
   imagePullSecrets: []
 
-  nameOverride: "metricservertestevalues"
-  fullnameOverride: ""
+  nameOverride: ""
+  fullnameOverride: "metrics-server-dev"
 
   serviceAccount:
     create: true

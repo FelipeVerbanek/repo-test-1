@@ -7,13 +7,18 @@ spec:
   generators:
   - list:
       elements:
-      - name: dev
-        chart: metric-server
+      - name: metric-server
         repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
-        chartVersion: 3.13.0
         namespace: monitoring
         server: https://10.89.0.3:6443
-        path: helm-charts/metricsserver
+        path: helm-charts/dev/metricsserver
+        valuesFile: values.yaml
+
+      - name: metric-server
+        repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
+        namespace: monitoring
+        server: https://10.89.0.3:6443
+        path: helm-charts/prod/metricsserver
         valuesFile: values.yaml
   
   template:
@@ -26,9 +31,6 @@ spec:
         targetRevision: HEAD
         path: "{{path}}"
         helm:
-          parameters:
-          - name: "{{metric-server-dev}}"
-            value: "{{chartVersion}}"
           valueFiles:
           - "{{valuesFile}}"
       destination:

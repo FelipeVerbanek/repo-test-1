@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: api-testando
+  name: api-testando-1-prod
   namespace: argocd
 spec:
-  project: dev
+  project: prod
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
     path: guestbook
   destination:
-    server: https://10.89.0.3:6443
-    namespace: dev
+    server: https://10.89.0.4:6443
+    namespace: prod
   syncPolicy:
     automated:
       prune: true

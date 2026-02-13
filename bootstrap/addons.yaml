@@ -7,17 +7,17 @@ spec:
   generators:
   - list:
       elements:
-      - name: metric-server
+      - name: metric-server-dev
         repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
         namespace: monitoring
         server: https://10.89.0.3:6443
         path: helm-charts/dev/metricsserver
         valuesFile: values.yaml
 
-      - name: metric-server
+      - name: metric-server-prod
         repoURL: https://github.com/FelipeVerbanek/repo-test-1.git
         namespace: monitoring
-        server: https://10.89.0.3:6443
+        server: https://10.89.0.4:6443
         path: helm-charts/prod/metricsserver
         valuesFile: values.yaml
   

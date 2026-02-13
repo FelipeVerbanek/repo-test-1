@@ -22,6 +22,7 @@ spec:
       directories:
       - path: bootstrap/apps/*/*
       - path: bootstrap/projects
+      - path: bootstrap/addons.yaml
   template:
     metadata:
       name: '{{path.basename}}'
